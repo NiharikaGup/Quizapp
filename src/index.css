@@ -20,6 +20,12 @@ code {
   align-items: center;
   justify-content: center;
 }
+
+.public-form-wrap .container-wrap{
+  background-color: white;
+  border-radius: 4px;
+  padding: 20px;
+}
 .public-form-wrap .public-form-content{
   background-color: #DCD9D8;
   border-radius: 4px;

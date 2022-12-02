@@ -1,47 +1,113 @@
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Avatar from "@mui/material/Avatar";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+//import CssBaseline from '@mui/material/CssBaseline';
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import image from "../images/notebook.jpg";
 //import './register.css';
 
 function Register() {
-    return (
-        <div className="form public-form-wrap ">
-            <Box
-                component="form"
-                sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' },
-                }}
-                noValidate
-                autoComplete="off"
-                >
-                    <div className='public-form-content login-content'>
-                        <div className='page-header'>
-                            <h1>Register</h1>
-                        </div>
-                        <div className="user-name">
-                            <TextField
-                                required
-                                id="outlined-required"
-                                label="Required"
-                                defaultValue="Enter Username"
-                            />
-                        </div>
-                        <div className="password">
-                            <TextField
-                                id="outlined-password-input"
-                                label="Password"
-                                type="password"
-                                autoComplete="current-password"
-                                />
-                        </div>
-                        <div className="button">
-                        <Button variant="contained">Submit</Button>
-                        </div>
-                    </div>
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${image})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <div className="form public-form-wrap ">
+        <Container className="container-wrap" component="main" maxWidth="xs">
+          {/* <CssBaseline /> */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography>Register</Typography>
+            <Box component="form" sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    name="firstName"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        //value="allowExtraEmails"
+                        color="primary"
+                      />
+                    }
+                    label="I want to create my account."
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Register
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link href="#" variant="body2">
+                    Already have an account? Sign in
+                  </Link>
+                </Grid>
+              </Grid>
             </Box>
-        </div>
-    )
+          </Box>
+        </Container>
+      </div>
+    </div>
+  );
 }
 
 export default Register;
-
