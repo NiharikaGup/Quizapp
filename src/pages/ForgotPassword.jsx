@@ -8,23 +8,19 @@ import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-//import './login.css';
 
-function Login() {
+function ForgotPassword() {
   const navigate = useNavigate();
 
   const initialValues = {
-    username: "",
-    password: "",
+    email: "",
   };
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
+    email: Yup.string()
       .email("please provide valid email")
       .required("Required"),
-    password: Yup.string().required("Required"),
   });
 
   const handleSubmit = (values) => {
@@ -75,40 +71,26 @@ function Login() {
                       <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
                         <LockOutlinedIcon />
                       </Avatar>
-                      <Typography>Login</Typography>
+                      <Typography>Forgot Password ?</Typography>
+                      <div style={{ textAlign: "center" }}>
+                        <p>Enter your email below :</p>
+                      </div>
+
                       <Box component="form" sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
-                          <Grid item xs={12} sm={6}>
-                            <TextField
-                              name="username"
-                              required
-                              fullWidth
-                              id="username"
-                              label="Username"
-                              onBlur={handleBlur}
-                              onChange={handleChange}
-                            />
-                            {errors.username && touched.username && (
-                              <div className="input-feedback">
-                                {errors.username}
-                              </div>
-                            )}
-                          </Grid>
-
-                          <Grid item xs={12} sm={6}>
+                          <Grid item xs={12}>
                             <TextField
                               required
                               fullWidth
-                              name="password"
-                              label="Password"
-                              type="password"
-                              id="password"
+                              id="email"
+                              label="Email Address"
+                              name="email"
                               onBlur={handleBlur}
                               onChange={handleChange}
                             />
-                            {errors.password && touched.password && (
+                            {errors.email && touched.email && (
                               <div className="input-feedback">
-                                {errors.password}
+                                {errors.email}
                               </div>
                             )}
                           </Grid>
@@ -122,15 +104,8 @@ function Login() {
                           fullWidth
                           sx={{ mt: 3, mb: 2 }}
                         >
-                          Submit
+                          Send new password
                         </Button>
-                        <Grid container justifyContent="flex-end">
-                          <Grid item>
-                            <Link href="#" variant="body2">
-                              Forgot password? Click here.
-                            </Link>
-                          </Grid>
-                        </Grid>
                       </Box>
                     </Box>
                   </div>
@@ -138,13 +113,10 @@ function Login() {
               }}
             </Formik>
           </Container>
-          <div style={{ textAlign: "center" }}>
-            <p>Login to choose a subject and start playing !!!</p>
-          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default ForgotPassword;
