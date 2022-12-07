@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -10,9 +13,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import image from "../images/notebook.jpg";
-import { useNavigate } from "react-router-dom";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { storeUser } from "../services/authentications";
 //import './register.css';
 
 function Register() {
@@ -29,11 +30,12 @@ function Register() {
     email: Yup.string()
       .email("Please provide valid email")
       .required("Required"),
-    password: Yup.string().required("Required"),
+    password: Yup.string().min(6).required("Required"),
   });
 
   const navigate = useNavigate();
   const handleSubmit = (values) => {
+    storeUser(values);
     window.localStorage.setItem("register", true);
     navigate("/login");
   };
@@ -168,7 +170,7 @@ function Register() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                           <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="/login" variant="body2">
                               Already have an account? Sign in
                             </Link>
                           </Grid>

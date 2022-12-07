@@ -12,13 +12,13 @@ import Link from "@mui/material/Link";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 //import './login.css';
-
+import { loginCheck } from "../services/authentications";
 function Login() {
   const navigate = useNavigate();
 
   const initialValues = {
-    username: "",
-    password: "",
+    username: undefined,
+    password: undefined,
   };
   const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -28,8 +28,14 @@ function Login() {
   });
 
   const handleSubmit = (values) => {
-    window.localStorage.setItem("login", true);
-    navigate("/dashboard");
+    const { status, error = "" } = loginCheck(values);
+    if (status) {
+      window.localStorage.setItem("login", true);
+      navigate("/dashboard");
+    } else {
+      alert(error);
+    }
+    return true;
   };
   return (
     <div
@@ -81,6 +87,7 @@ function Login() {
                           <Grid item xs={12} sm={6}>
                             <TextField
                               name="username"
+                              value={values.username}
                               required
                               fullWidth
                               id="username"
@@ -100,6 +107,7 @@ function Login() {
                               required
                               fullWidth
                               name="password"
+                              value={values.password}
                               label="Password"
                               type="password"
                               id="password"
@@ -126,7 +134,7 @@ function Login() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                           <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="/forgotpwd" variant="body2">
                               Forgot password? Click here.
                             </Link>
                           </Grid>

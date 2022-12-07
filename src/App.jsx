@@ -15,7 +15,15 @@ function App() {
         <Route path="/login" exact element={<Login />} />
         <Route path="/register" exact element={<Register />} />
         <Route path="/forgotpwd" exact element={<ForgotPassword />} />
-        <Route path="/subject" exact element={<Subject />} />
+        <Route
+          path="/subject"
+          exact
+          element={
+            <PrivateLayout>
+              <Subject />
+            </PrivateLayout>
+          }
+        />
         <Route
           path="/"
           exact
