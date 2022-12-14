@@ -6,6 +6,9 @@ import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/ForgotPassword";
 import PrivateLayout from "./components/layout/PrivateLayout";
 import Subject from "./pages/Subject";
+import SubSubject from "./pages/SubSubject";
+import Instructions from "./pages/Instructions";
+import Questions from "./pages/Questions";
 import "./App.css";
 
 function App() {
@@ -15,12 +18,40 @@ function App() {
         <Route path="/login" exact element={<Login />} />
         <Route path="/register" exact element={<Register />} />
         <Route path="/forgotpwd" exact element={<ForgotPassword />} />
+
         <Route
           path="/subject"
           exact
           element={
             <PrivateLayout>
               <Subject />
+            </PrivateLayout>
+          }
+        />
+        <Route
+          path="/sub-subject"
+          exact
+          element={
+            <PrivateLayout>
+              <SubSubject />
+            </PrivateLayout>
+          }
+        />
+        <Route
+          path="/instructions"
+          exact
+          element={
+            <PrivateLayout>
+              <Instructions />
+            </PrivateLayout>
+          }
+        />
+        <Route
+          path="/questions"
+          exact
+          element={
+            <PrivateLayout>
+              <Questions />
             </PrivateLayout>
           }
         />

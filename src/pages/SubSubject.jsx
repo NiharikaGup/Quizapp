@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import image from "../images/notebook.jpg";
 import Container from "@mui/material/Container";
@@ -9,13 +9,14 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
-import { quizSubjects } from "../data/quiz";
+import { quizSubCategory } from "../data/quiz";
 
-function Subject() {
-  const navigate = useNavigate();
-  const handleSubSubjectNavigate = (id) => {
-    navigate("/sub-subject", { state: { id: id } });
-  };
+function SubSubject() {
+  const location = useLocation();
+  const {
+    state: { id: subjectId },
+  } = location;
+  console.log("location", location, "subjectId", subjectId);
   return (
     <div
       style={{
@@ -44,19 +45,21 @@ function Subject() {
                 </Avatar>
                 <Typography>Choose Subject</Typography>
                 <Box component="form" sx={{ mt: 3 }}>
-                  {quizSubjects.map((item, index) => {
-                    return (
-                      <Button
-                        variant="contained"
-                        fullWidth
-                        key={index}
-                        sx={{ mt: 3 }}
-                        onClick={() => handleSubSubjectNavigate(item.id)}
-                      >
-                        {item.title}
-                      </Button>
-                    );
-                  })}
+                  {quizSubCategory
+                    .filter((item) => item.subjectId === subjectId)
+                    .map((item, index) => {
+                      return (
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          fullWidth
+                          key={index}
+                          sx={{ mt: 3 }}
+                        >
+                          {item.title}
+                        </Button>
+                      );
+                    })}
                 </Box>
               </Box>
             </div>
@@ -67,4 +70,4 @@ function Subject() {
   );
 }
 
-export default Subject;
+export default SubSubject;

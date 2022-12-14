@@ -40,7 +40,7 @@ function ForgotPassword() {
           <div style={{ textAlign: "center" }}>
             <h1>Quiz-App</h1>
           </div>
-          <Container className="container-wrap" component="main" maxWidth="xs">
+          <Container className="container-wrap" component="main">
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
@@ -72,7 +72,11 @@ function ForgotPassword() {
                         <LockOutlinedIcon />
                       </Avatar>
                       <Typography>Forgot Password ?</Typography>
-                      <div style={{ textAlign: "center" }}>
+                      <div
+                        style={{
+                          textAlign: "center",
+                        }}
+                      >
                         <p>Enter your email below :</p>
                       </div>
 
