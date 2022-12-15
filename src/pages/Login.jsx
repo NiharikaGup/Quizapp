@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
-import image from "../images/notebook.jpg";
+import image from "../images/question3.png";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -11,8 +11,8 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-//import './login.css';
 import { loginCheck } from "../services/authentications";
+
 function Login() {
   const navigate = useNavigate();
 
@@ -47,8 +47,8 @@ function Login() {
     >
       <div className="form public-form-wrap ">
         <div>
-          <div style={{ textAlign: "center" }}>
-            <h1>Quiz-App</h1>
+          <div style={{ textAlign: "center", color: "white" }}>
+            <h1>Online Quiz-App</h1>
           </div>
           <Container className="container-wrap" component="main" maxWidth="xs">
             <Formik
@@ -146,7 +146,7 @@ function Login() {
               }}
             </Formik>
           </Container>
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", color: "white" }}>
             <p>Login to choose a subject and start playing !!!</p>
           </div>
         </div>
