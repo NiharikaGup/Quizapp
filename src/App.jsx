@@ -37,7 +37,7 @@ function App() {
             </PrivateLayout>
           }
         />
-        <Route
+        {/* <Route
           path="/instructions"
           exact
           element={
@@ -45,7 +45,7 @@ function App() {
               <Instructions />
             </PrivateLayout>
           }
-        />
+        /> */}
         <Route
           path="/questions"
           exact
