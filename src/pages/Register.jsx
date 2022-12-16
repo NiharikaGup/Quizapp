@@ -14,7 +14,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import image from "../images/notebook.jpg";
 import { storeUser } from "../services/authentications";
-//import './register.css';
 
 function Register() {
   const initialValues = {

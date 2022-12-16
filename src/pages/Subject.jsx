@@ -2,10 +2,11 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
-import image from "../images/notebook.jpg";
+import image from "../images/question3.png";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
+import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
@@ -26,7 +27,7 @@ function Subject() {
     >
       <div className="form public-form-wrap ">
         <div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", color: "white" }}>
             <h1>Quiz-App</h1>
             <p>Choose a Subject of your choice : </p>
           </div>
@@ -40,9 +41,9 @@ function Subject() {
                 }}
               >
                 <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                  <LockOutlinedIcon />
+                  <AutoStoriesIcon />
                 </Avatar>
-                <Typography>Choose Subject</Typography>
+                <Typography>Choose a Subject of your choice: </Typography>
                 <Box component="form" sx={{ mt: 3 }}>
                   {quizSubjects.map((item, index) => {
                     return (

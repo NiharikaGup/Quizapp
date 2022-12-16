@@ -2,10 +2,10 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
-import image from "../images/question3.png";
+import image from "../images/question1.png";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Face6Icon from "@mui/icons-material/Face6";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
@@ -79,7 +79,7 @@ function Login() {
                       }}
                     >
                       <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                        <LockOutlinedIcon />
+                        <Face6Icon />
                       </Avatar>
                       <Typography>Login</Typography>
                       <Box component="form" sx={{ mt: 3 }}>

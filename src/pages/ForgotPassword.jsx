@@ -2,10 +2,11 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
-import image from "../images/notebook.jpg";
+import image from "../images/question2.png";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Formik, Form } from "formik";
@@ -38,7 +39,7 @@ function ForgotPassword() {
       <div className="form public-form-wrap ">
         <div>
           <div style={{ textAlign: "center" }}>
-            <h1>Quiz-App</h1>
+            <h1>Online Quiz-App</h1>
           </div>
           <Container className="container-wrap" component="main">
             <Formik
@@ -69,7 +70,7 @@ function ForgotPassword() {
                       }}
                     >
                       <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                        <LockOutlinedIcon />
+                        <VpnKeyIcon />
                       </Avatar>
                       <Typography>Forgot Password ?</Typography>
                       <div

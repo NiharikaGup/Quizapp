@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
-import image from "../images/notebook.jpg";
+import image from "../images/question4.png";
 
 function Questions() {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ function Questions() {
           autoComplete="off"
         >
           <div className="public-form-content login-content">
-            <div className="page-header">
-              <h1>Question</h1>
+            <div className="page-header" style={{ textAlign: "center" }}>
+              <h1>Question 1/5:</h1>
             </div>
           </div>
         </Box>
