@@ -56,15 +56,6 @@ function App() {
           }
         />
         <Route
-          path="/"
-          exact
-          element={
-            <PrivateLayout>
-              <Login />
-            </PrivateLayout>
-          }
-        />
-        <Route
           path="*"
           exact
           element={
