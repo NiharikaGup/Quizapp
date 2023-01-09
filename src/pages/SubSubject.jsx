@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import image from "../images/question2.png";
 import Container from "@mui/material/Container";
@@ -14,10 +14,15 @@ import { quizSubCategory } from "../data/quiz";
 
 function SubSubject() {
   const location = useLocation();
+  const navigate = useNavigate();
   const {
     state: { id: subjectId },
   } = location;
   console.log("location", location, "subjectId", subjectId);
+
+  const handleNavigate = (id) => {
+    navigate("/instructions", { state: { subSubjectId: id } });
+  };
   return (
     <div
       style={{
@@ -50,11 +55,11 @@ function SubSubject() {
                     .map((item, index) => {
                       return (
                         <Button
-                          type="submit"
                           variant="contained"
                           fullWidth
                           key={index}
                           sx={{ mt: 3 }}
+                          onClick={() => handleNavigate(item.id)}
                         >
                           {item.title}
                         </Button>

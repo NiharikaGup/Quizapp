@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import image from "../images/question4.png";
 import Radio from "@mui/material/Radio";
@@ -5,14 +7,46 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import Chip from "@mui/material/Chip";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { quizeQuestions } from "../data/quiz";
 
 function Questions() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {
+    state: { subSubjectId },
+  } = location;
+
+  const [questionList, setQuestionList] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState({});
+  const [currentNumber, setCurrentNumber] = useState(0);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    let temp = quizeQuestions.filter(
+      (item) => item.subCategoryId === subSubjectId
+    );
+    setCurrentQuestion(temp[0]);
+    setQuestionList(temp);
+  }, []);
+
+  const handlePrevious = () => {
+    let prevQuestion = currentNumber - 1;
+    if (0 <= prevQuestion) {
+      setCurrentQuestion(questionList[prevQuestion]);
+      setCurrentNumber(prevQuestion);
+    }
+  };
+
+  const handleNext = () => {
+    let nextQuestion = currentNumber + 1;
+    if (nextQuestion < questionList.length) {
+      setCurrentQuestion(questionList[nextQuestion]);
+      setCurrentNumber(nextQuestion);
+    }
+  };
+
   return (
     <div
       style={{
@@ -41,7 +75,7 @@ function Questions() {
 
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">
-                  This is my question number one, with four options below.
+                  {currentQuestion.question}
                 </FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
@@ -77,13 +111,10 @@ function Questions() {
                     },
                   }}
                 >
-                  <Chip icon={<ArrowBackIcon />} label="back" />
-                  <Chip icon={<ArrowForwardIcon />} label="next" />
+                  <Chip label="back" onClick={handlePrevious} />
+                  <Chip label="next" onClick={handleNext} />
                   <Chip icon={<HighlightOffIcon />} label="quit quiz" />
                 </Box>
-                <Stack sx={{ alignItems: "center" }}>
-                  <Pagination count={5} color="primary" />
-                </Stack>
               </FormControl>
             </div>
           </div>

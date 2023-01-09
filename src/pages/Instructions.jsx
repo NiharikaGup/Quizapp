@@ -1,17 +1,24 @@
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Link from "@mui/material/Link";
 import image from "../images/question1.png";
 import Button from "@mui/material/Button";
 
 function Instructions() {
+  const location = useLocation();
   const navigate = useNavigate();
+  const {
+    state: { subSubjectId },
+  } = location;
   const user = window.localStorage.getItem("userInfo")
     ? JSON.parse(window.localStorage.getItem("userInfo"))
     : {};
   const handleLogout = () => {
     window.localStorage.removeItem("login");
     navigate("/login");
+  };
+  const handleNavigate = () => {
+    navigate("/questions", { state: { subSubjectId: subSubjectId } });
   };
   return (
     <div
@@ -40,6 +47,7 @@ function Instructions() {
                 4 choices.<br></br> 4. Click on Next to move on to the next
                 question.<br></br> 5. Click Quit quiz to end the quiz.
               </h3>
+              <div onClick={handleNavigate}>Start Quiz</div>
               <Link href="/subject" variant="body2">
                 Go to Subject Page
               </Link>
